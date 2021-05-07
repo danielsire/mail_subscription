@@ -1,0 +1,71 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: danielsire
+      changes:
+        - createTable:
+            tableName: subscription
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+              - column:
+                  name: gender
+                  type: varchar(20)
+              - column:
+                  name: date_of_birth
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: flag_consent
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: newsletter_id
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: const_email
+            schemaName: public
+            tableName: subscription
+            validate: true
+
+
+  - changeSet:
+      id: 2
+      author: danielsire
+      changes:
+        - sql:
+            sql: insert into subscription (email, first_name, gender, date_of_birth, flag_consent, newsletter_id, is_active, created_at, updated_at) values ('customer1@test.com', 'Joe', 'Male', '2000-09-01', TRUE, 'sd3la9n2db', TRUE,'2021-05-06T12:00:00Z', '2021-05-06T12:00:00Z');
+              insert into subscription (email, first_name, gender, date_of_birth, flag_consent, newsletter_id, is_active, created_at, updated_at) values ('customer2@test.com', 'Joane', 'Female', '1998-10-15', FALSE, 'wz446v4wde', TRUE,'2021-05-07T12:00:00Z', '2021-05-07T12:00:00Z');
+              insert into subscription (email, first_name, gender, date_of_birth, flag_consent, newsletter_id, is_active, created_at, updated_at) values ('customer3@test.com', 'Blake', 'Gender Neutral', '2001-07-08', TRUE, 'er7gf490us', TRUE,'2021-05-08T12:00:00Z', '2021-05-08T12:00:00Z');
+        - rollback:
+            sql: delete from subscription;

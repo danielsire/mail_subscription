@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: subscription-service
+  profiles.active: local
+  jpa:
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+
+---
+spring:
+  profiles: local
+  datasource:
+    platform: postgres
+    driver: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/subscriptions
+    username: subscriptions
+    password: subscriptions
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate.ddl-auto: none
+
+---
+spring:
+  profiles: tests
+  datasource:
+    driver: org.h2.Driver
+    url: jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS subscriptions
+    username: sa
+    password:
+  jpa:
+    database: h2
+    show-sql: true
+    hibernate.ddl-auto: create
