@@ -1,5 +1,15 @@
 server:
   port: 8081
+  ssl:
+    enabled: true
+    enabled-protocols: TLSv1.2
+    key-store: classpath:certificates/identity.jks
+    key-password: secret
+    key-store-password: secret
+    key-alias: ssl
+    trust-store: classpath:certificates/identity.truststore.jks
+    trust-store-password: secret
+    client-auth: need
 
 spring:
   application:
