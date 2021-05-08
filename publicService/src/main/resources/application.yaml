@@ -3,7 +3,7 @@ server:
 
 feign:
   client:
-    url: http://localhost:8081
+    url: https://localhost:8081
 
 spring:
   application:

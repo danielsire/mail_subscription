@@ -18,6 +18,9 @@
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<springfox.swagger.version>2.9.2</springfox.swagger.version>
 		<fixture.factory.version>3.1.0</fixture.factory.version>
+		<httpcore.version>4.4.12</httpcore.version>
+		<httpclient.version>4.5.9</httpclient.version>
+		<liferay.components.version>1.0.1</liferay.components.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -62,6 +65,26 @@
 			<artifactId>springfox-data-rest</artifactId>
 			<version>${springfox.swagger.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${httpcore.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>com.liferay.petra.apache.http.components</artifactId>
+			<version>${liferay.components.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>br.com.six2six</groupId>
