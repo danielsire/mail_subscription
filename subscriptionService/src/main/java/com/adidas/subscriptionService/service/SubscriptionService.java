@@ -1,5 +1,6 @@
 package com.adidas.subscriptionService.service;
 
+import com.adidas.subscriptionService.controller.dto.SubscriptionRequest;
 import com.adidas.subscriptionService.exceptions.SubscriptionNotFoundException;
 import com.adidas.subscriptionService.model.Subscription;
 import com.adidas.subscriptionService.repository.SubscriptionRepository;
@@ -24,12 +25,12 @@ public class SubscriptionService {
         return Optional.ofNullable(repository.findByEmail(email));
     }
 
-    public Subscription upsert(Subscription subscription) {
+    public Subscription upsert(SubscriptionRequest subscription) {
         //Add Newsletter Campaign - simulated one
         subscription.setNewsLetterId(getAlphanumericHash());
         subscription.setIsActive(true);
 
-        return repository.save(subscription);
+        return repository.save(SubscriptionRequest.toModel(subscription));
     }
 
     public Subscription cancelSubscription(String email) {
@@ -45,6 +46,4 @@ public class SubscriptionService {
     private String getAlphanumericHash() {
         return RandomStringUtils.randomAlphanumeric(10);
     }
-
-
 }

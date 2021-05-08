@@ -1,9 +1,7 @@
 package com.adidas.subscriptionService.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,13 +19,14 @@ public class Subscription {
     @NonNull
     private String email;
 
-    @Column(name = "fist_name")
+    @Column(name = "first_name")
     private String firstName;
 
     private String gender;
 
     @NonNull
     @Column(name = "date_of_birth")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfBirth;
 
     @NonNull
