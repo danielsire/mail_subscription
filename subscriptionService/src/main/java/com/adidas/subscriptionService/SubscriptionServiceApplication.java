@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.WebApplicationInitializer;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -38,11 +37,6 @@ public class SubscriptionServiceApplication extends SpringBootServletInitializer
 				.apiInfo(getApiInfo());
 	}
 
-	/*.select()
-				.apis(RequestHandlerSelectors.basePackage("com.adidas.subscriptionService.controller"))
-			.paths(PathSelectors.ant("/api/*")).build()
-				.apiInfo(getApiInfo());*/
-
 	@SuppressWarnings("rawtypes")
 	private ApiInfo getApiInfo() {
 		return new ApiInfo(
@@ -50,7 +44,7 @@ public class SubscriptionServiceApplication extends SpringBootServletInitializer
 				"API",
 				"v1",
 				"",
-				new Contact("Daniel", "https://github.com/danielsire", null),
+				new Contact("DanielSire", "https://github.com/danielsire", null),
 				"",
 				"", new ArrayList<VendorExtension>() //
 		);
