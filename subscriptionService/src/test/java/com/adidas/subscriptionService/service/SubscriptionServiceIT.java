@@ -2,6 +2,7 @@ package com.adidas.subscriptionService.service;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.adidas.subscriptionService.controller.dto.SubscriptionRequest;
+import com.adidas.subscriptionService.events.dto.SubscriptionEvent;
 import com.adidas.subscriptionService.exceptions.SubscriptionNotFoundException;
 import com.adidas.subscriptionService.fixture.BaseTestWithFixture;
 import com.adidas.subscriptionService.fixture.model.SubscriptionFixture;
@@ -11,20 +12,31 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("tests")
 public class SubscriptionServiceIT extends BaseTestWithFixture {
 
+    @MockBean
+    private ApplicationEventPublisher eventPublisher;
+
     @Autowired
+    @InjectMocks
     private SubscriptionService service;
 
     @Autowired
@@ -34,6 +46,8 @@ public class SubscriptionServiceIT extends BaseTestWithFixture {
 
     @Before
     public void init() {
+        MockitoAnnotations.initMocks(this);
+
         repository.deleteAll();
 
         fixtureSubscriptions = Fixture.from(Subscription.class).gimme(2, SubscriptionFixture.VALID_SUBSCRIPTION_DATA_NO_ID);
@@ -42,6 +56,7 @@ public class SubscriptionServiceIT extends BaseTestWithFixture {
 
     @Test
     public void shouldCreateSubscription() {
+
         SubscriptionRequest fixtureSubscription = Fixture.from(SubscriptionRequest.class).gimme(SubscriptionFixture.VALID_SUBSCRIPTION_TO_CANCEL);
         Subscription created = service.upsert(fixtureSubscription);
 
@@ -84,6 +99,7 @@ public class SubscriptionServiceIT extends BaseTestWithFixture {
 
     @Test
     public void shouldReturnCancelSubscription() {
+
         Subscription expected = fixtureSubscriptions.get(1);
 
         Subscription returned = service.cancelSubscription(expected.getEmail());
