@@ -17,6 +17,14 @@ spring:
   profiles.active: local
   jpa:
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 15672
+    username: guest
+    exchange: email.exchange
+    queue: email.queue
+    routingkey: email.routingkey
 
 ---
 spring:
