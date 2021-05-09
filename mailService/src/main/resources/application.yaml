@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: subscription-service
+  profiles.active: local
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 15672
+    username: guest
+    exchange: email.exchange
+    queue: email.queue
+    routingkey: email.routingkey
