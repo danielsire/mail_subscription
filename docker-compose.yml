@@ -13,3 +13,15 @@ services:
        - ~/storage/subscriptions/postgres:/data/postgres
     ports:
       - "5433:5432"
+
+  rabbitmq:
+    container_name: subscription_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+    volumes:
+     - ~/storage/subscriptions/rabbitmq:/var/lib/rabbitmq
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
