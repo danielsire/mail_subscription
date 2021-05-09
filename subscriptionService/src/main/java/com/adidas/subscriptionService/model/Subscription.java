@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class Subscription {
+public class Subscription implements Serializable {
+
+    private static final long serialVersionUID = -538251056758452156L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
