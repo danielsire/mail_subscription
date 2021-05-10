@@ -13,6 +13,8 @@ services:
        - ~/storage/subscriptions/postgres:/data/postgres
     ports:
       - "5433:5432"
+    networks:
+      - mail_subscription
 
   rabbitmq:
     container_name: subscription_rabbitmq
@@ -25,3 +27,56 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+    restart: always
+    networks:
+      - mail_subscription
+
+  public-service:
+    build:
+      context: ./publicService/
+      dockerfile: Dockerfile
+    image: public-service
+    container_name: public-service
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+    ports:
+      - "8080:8080" 
+    networks:
+      - mail_subscription
+    
+  subscription-service:
+    build:
+      context: ./subscriptionService/
+      dockerfile: Dockerfile
+    image: subscription-service
+    container_name: subscription-service
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+    ports:
+      - "8081:8081"
+    depends_on: 
+      - postgres
+      - rabbitmq
+    networks:
+      - mail_subscription
+    
+  mail-service:
+    build:
+      context: ./mailService/
+      dockerfile: Dockerfile
+    image: mail-service
+    container_name: mail-service
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+    ports:
+      - "8082:8082"
+    links:
+      - "rabbitmq"
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - mail_subscription
+
+networks:
+  mail_subscription:
+    driver: bridge
