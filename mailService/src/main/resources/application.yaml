@@ -3,13 +3,24 @@ server:
 
 spring:
   application:
-    name: subscription-service
+    name: mail-service
   profiles.active: local
   rabbitmq:
-    host: localhost
     password: guest
     port: 15672
     username: guest
     exchange: email.exchange
     queue: email.queue
     routingkey: email.routingkey
+
+---
+spring:
+  profiles: local
+  rabbitmq:
+    host: localhost
+
+---
+spring:
+  profiles: docker
+  rabbitmq:
+    host: rabbitmq
