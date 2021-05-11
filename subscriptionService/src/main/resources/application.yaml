@@ -70,4 +70,4 @@ spring:
     show-sql: true
     hibernate.ddl-auto: none
   rabbitmq:
-    host: rabitmq
+    host: rabbitmq
