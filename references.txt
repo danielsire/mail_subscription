@@ -1,0 +1,11 @@
+installed: kubectl, minikube and virtualbox
+
+installed kompose to convert docker-compose
+
+https://openliberty.io/guides/kubernetes-intro.html#deploying-the-microservices
+
+https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
+
+kubectl apply -f kubernetes.yaml
+
+kubectl get pods
