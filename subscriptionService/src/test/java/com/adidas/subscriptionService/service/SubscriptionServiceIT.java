@@ -2,7 +2,6 @@ package com.adidas.subscriptionService.service;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.adidas.subscriptionService.controller.dto.SubscriptionRequest;
-import com.adidas.subscriptionService.events.dto.SubscriptionEvent;
 import com.adidas.subscriptionService.exceptions.SubscriptionNotFoundException;
 import com.adidas.subscriptionService.fixture.BaseTestWithFixture;
 import com.adidas.subscriptionService.fixture.model.SubscriptionFixture;
@@ -13,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,8 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.any;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

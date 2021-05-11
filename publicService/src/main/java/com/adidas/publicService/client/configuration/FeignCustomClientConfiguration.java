@@ -31,7 +31,7 @@ public class FeignCustomClientConfiguration {
             TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
                 @Override
                 public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                    //Do your validations
+                    
                     return true;
                 }
             };
