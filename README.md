@@ -6,9 +6,9 @@ Project to implement a simple Subscription Backend API.
 The project consists of three independent modules that communicate between each other.
 
 Modules:
-- **Public-Service**: Microservice with public REST API, exposing methods to deal with subscriptions, [follow for more](https://github.com/danielsire/mail_subscription/blob/main/publicService/README.md "follow for more").
-- **Subscription-Service**: Microservice with secured REST API, exposing methods to deal with subscriptions, internal logic to database persistence and triggering email notifications, [follow for more](https://github.com/danielsire/mail_subscription/blob/main/subscriptionService/README.md "follow for more").
-- **Mail-Service**: Microservice that listen to events to send email notifications, [follow for more](https://github.com/danielsire/mail_subscription/blob/main/mailService/README.md "follow for more").
+- **Public-Service**: Microservice with public REST API, exposing methods to deal with subscriptions, [follow for more](https://github.com/danielsire/mail_subscription/tree/main/publicService#readme "follow for more").
+- **Subscription-Service**: Microservice with secured REST API, exposing methods to deal with subscriptions, internal logic to database persistence and triggering email notifications, [follow for more](https://github.com/danielsire/mail_subscription/tree/main/subscriptionService#readme "follow for more").
+- **Mail-Service**: Microservice that listen to events to send email notifications, [follow for more](https://github.com/danielsire/mail_subscription/tree/main/mailService#readme "follow for more").
 
 ## Solution Proposal
 

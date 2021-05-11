@@ -25,7 +25,7 @@ And under ***publish message*** tab, fill in:
       "id":3,
       "email":"customer3@test.com",
       "firstName":"Blake",
-      "gender":"Gender Neutral",
+      "gender":"Some Gender",
       "dateOfBirth":"2001-07-07",
       "flagConsent":true,
       "newsLetterId":"er7gf490us",
