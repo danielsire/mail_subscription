@@ -1,6 +1,7 @@
 package com.adidas.publicService.client;
 
 import com.adidas.publicService.client.configuration.FeignCustomClientConfiguration;
+import com.adidas.publicService.client.fallback.SubscriptionClientFallbackFactory;
 import com.adidas.publicService.dto.SubscriptionRequest;
 import com.adidas.publicService.dto.SubscriptionResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,7 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "subscriptionService", url = "${feign.client.url}", configuration = FeignCustomClientConfiguration.class)
+@FeignClient(
+        name = "subscriptionService",
+        url = "${feign.client.url}",
+        configuration = FeignCustomClientConfiguration.class,
+        fallbackFactory = SubscriptionClientFallbackFactory.class
+)
 public interface SubscriptionClient {
 
     @GetMapping(value = "/api/subscription/{email}", produces= MediaType.APPLICATION_JSON_VALUE)

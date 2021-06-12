@@ -4,6 +4,7 @@ import com.google.common.base.Predicates;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.WebApplicationInitializer;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableCircuitBreaker
 @EnableSwagger2
 public class PublicServiceApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
 

@@ -21,11 +21,11 @@ public class GlobalControllerExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalControllerExceptionHandler.class);
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<Object> handleFeignConflict(FeignException ex, final HttpServletRequest request) {
         logger.error(request.getRequestURL().toString(), ex);
-        return new ResponseEntity<Object>(ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>("Try again later", new HttpHeaders(), HttpStatus.SERVICE_UNAVAILABLE);
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
